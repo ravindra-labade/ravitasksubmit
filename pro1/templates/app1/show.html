@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>show</title>
+
+{% endblock %}
+{% block content %}
+
+   <table class="table table-hover table-dark w-50 text-center">
+                <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Created at</th>
+                            <th>Updated On</th>
+                            <th colspan="2" class="text-center">Action</th>
+
+                        </tr>
+                </thead>
+                <tbody>
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.id }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.content }}</td>
+                            <td>{{ post.created_at }}</td>
+                            <td>{{ post.updated_on }}</td>
+                            <td>
+                                <a href="{% url 'update_url' post.id %}" >
+                                    <button class="btn btn-primary">&nbsp Update</button>
+                                </a>
+                                <a href="{% url 'delete_url' post.id %}">
+                                    <button class="btn btn-danger">&nbsp Delete</button>
+
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+
+{% endblock %}
